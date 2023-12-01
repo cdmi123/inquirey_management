@@ -5,29 +5,17 @@ $this->db->where('id',$id);
 $arr = $this->db->get('admin')->row_array();
 
 $date_for = date('Y-n-d');
-$punchData = $this->db->query("SELECT MIN(time) inTime,MAX(time) outTime FROM `tblt_timesheet` where date='$date_for' and punchingcode=".$arr['punchcode'])->row_array();
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo site_url();?>" class="brand-link">
       <img src="<?php echo base_url('assets/dist/img/cdmi.jpg')?>" alt="CDMI Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">CDMI</span>
+      <span class="brand-text font-weight-light">CDMI | <?php echo $arr['name']?></span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="<?php echo base_url('upload/'.$arr['image'])?>" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block"><?php echo $arr['name']?></a>
-          <p class="text-white mb-0">In : <?php echo $punchData['inTime'] ? $punchData['inTime'] : "00:00"; ?><br>Out: <?php echo $punchData['outTime'] ? $punchData['outTime'] : "00:00"; ?></p>
-        </div>
-      </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -63,42 +51,37 @@ $punchData = $this->db->query("SELECT MIN(time) inTime,MAX(time) outTime FROM `t
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item has-treeview">
-                <a href="" class="nav-link">
-                  <i class="fas fa-plus nav-icon"></i> Add Inq
-                  <i class="fas fa-angle-left right"></i>
-                </a>
-                <ul class="nav nav-treeview peta_menu">
-                    <li class="nav-item">
+              <li class="nav-item">
                       <a href="<?php echo site_url('inquiry/index');?>" class="nav-link">
-                        <i class="fas fa-desktop nav-icon"></i>Regular Inq
+                        <i class="fas fa-plus nav-icon"></i></i>Add Inq
                       </a>
                     </li>
-                    <!-- <li class="nav-item">
-                      <a href="<?php //echo site_url('schoolinq/add_school_inquiry'); ?>" class="nav-link">
-                        <i class="fas fa-building nav-icon"></i>School Inq
+              <li class="nav-item">
+                      <a href="<?php echo site_url('inquiry/view_inquiry'); ?>" class="nav-link">
+                        <i class="fas fa-desktop nav-icon"></i>View Inq
                       </a>
-                    </li> -->
-                </ul>
+                    </li>
+            </ul>
+          </li>
+           <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-question"></i>
+              <p>
+                Manage Staff
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item has-treeview">
+                <a href="<?php echo site_url('admin/index'); ?>" class="nav-link">
+                  <i class="fas fa-plus nav-icon"></i> Add Staff
+                </a>
               </li>
 
               <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-eye nav-icon"></i> View Inq
-                  <i class="fas fa-angle-left right"></i>
+                <a href="<?php echo site_url('admin/view_admin'); ?>" class="nav-link">
+                  <i class="fas fa-eye nav-icon"></i> View Staff
                 </a>
-                <ul class="nav nav-treeview peta_menu">
-                    <li class="nav-item">
-                      <a href="<?php echo site_url('inquiry/view_inquiry'); ?>" class="nav-link">
-                        <i class="fas fa-desktop nav-icon"></i>Regular Inq
-                      </a>
-                    </li>
-                    <!-- <li class="nav-item">
-                      <a href="<?php //echo site_url('schoolinq/view_school_inquiry'); ?>" class="nav-link">
-                        <i class="fas fa-building nav-icon"></i>School Inq
-                      </a>
-                    </li> -->
-                </ul>
               </li>
             </ul>
           </li>

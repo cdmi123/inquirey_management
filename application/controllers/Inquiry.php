@@ -14,7 +14,7 @@ class Inquiry extends CI_Controller {
 	{
 		$course['course_data'] = $this->db->get('inq_courses')->result_array();
 
-		$this->db->where_in('id',INQ_IDS);
+		// $this->db->where_in('id',INQ_IDS);
 		$this->db->where_in('status',1);
 
 		$course['faculties'] = $this->db->get('admin')->result_array();
@@ -95,7 +95,7 @@ class Inquiry extends CI_Controller {
 		$data['branches'] =$branch_arr; 
 		$data['course_data'] = $this->db->get('inq_courses')->result_array();
 		$data['type'] = "all";
-		$this->db->where('branch_id',$this->session->userdata('branch_id'));
+		// $this->db->where('branch_id',$this->session->userdata('branch_id'));
 		$data['faculties'] = $this->db->get('admin')->result_array();
 
 

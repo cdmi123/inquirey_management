@@ -10,7 +10,7 @@ class Admin_model extends CI_Model
 
 	function view_data()
 	{
-		$this->db->where('branch_id',$this->session->userdata('branch_id'));
+		// $this->db->where('branch_id',$this->session->userdata('branch_id'));
 		$qry=$this->db->get('admin');
 		return $qry->result_array();
 	}
