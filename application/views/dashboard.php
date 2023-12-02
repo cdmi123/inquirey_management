@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->view('header');
 $role = $this->session->userdata('user_role');
+$branch_id = $this->session->userdata('branch_id');
 
 ?>
 
@@ -9,420 +10,389 @@ $role = $this->session->userdata('user_role');
   <div class="content-wrapper p-3">
 
     <div id="accordion">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-block text-left text-bold" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Yogichowk (H/O)
-        </button>
-      </h5>
+
+        <?php if($role==1 || $role==2 || $branch_id==1) { ?>
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-block text-left text-bold" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Yogichowk (H/O)
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseOne" class="collapse <?php if($this->session->userdata('branch_id')==1) { ?> show  <?php } ?> p-3" aria-labelledby="headingOne" data-parent="#accordion">
+                  <section class="content">
+                <div class="container-fluid">
+                  
+                  <!-- Small boxes (Stat box) -->
+                  <div class="row">
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-info">
+                        <div class="inner">
+                          <h3><?php echo @$b1_cnt;?></h3> 
+                          <p>Today Course Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('inquiry/today_followup/1')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>          
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-danger">
+                        <div class="inner">
+                          <h3><?php echo $b1_due_inq;?></h3>
+                          <p>Due Course Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('inquiry/due_followup/1')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-info">
+                        <div class="inner">
+                          <h3><?php echo $b1_scl_today;?></h3>
+                          <p>Today School Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('schoolinq/today_followup/1')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-danger">
+                        <div class="inner">
+                          <h3><?php echo $b1_scl_due;?></h3>
+                          <p>Due School Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('schoolinq/due_followup/1')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                  </div>
+                </div><!-- /.container-fluid -->  
+              </section>
+              </div>
+            </div>
+        <?php } ?>
+
+        <?php if($role==1 || $role==2 || $branch_id==2) { ?>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn collapsed btn-block text-left text-bold" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Katargam
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse <?php if($this->session->userdata('branch_id')==2) { ?> show  <?php } ?>  p-3" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <section class="content">
+                <div class="container-fluid">
+                  
+                  <!-- Small boxes (Stat box) -->
+                  <div class="row">
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-info">
+                        <div class="inner">
+                          <h3><?php echo @$b2_cnt;?></h3> 
+                          <p>Today Course Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('inquiry/today_followup/2')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>          
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-danger">
+                        <div class="inner">
+                          <h3><?php echo $b2_due_inq;?></h3>
+                          <p>Due Course Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('inquiry/due_followup/2')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-info">
+                        <div class="inner">
+                          <h3><?php echo $b2_scl_today;?></h3>
+                          <p>Today School Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('schoolinq/today_followup/2')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-danger">
+                        <div class="inner">
+                          <h3><?php echo $b2_scl_due;?></h3>
+                          <p>Due School Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('schoolinq/due_followup/2')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                  </div>
+                </div><!-- /.container-fluid -->  
+              </section>
+              </div>
+            </div>
+        <?php } ?>
+
+        <?php if($role==1 || $role==2 || $branch_id==3) { ?>
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button class="btn btn-block text-left text-bold collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Utran
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse <?php if($this->session->userdata('branch_id')==3) { ?> show  <?php } ?> p-3" aria-labelledby="headingThree" data-parent="#accordion">
+                  <section class="content">
+                <div class="container-fluid">
+                  
+                  <!-- Small boxes (Stat box) -->
+                  <div class="row">
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-info">
+                        <div class="inner">
+                          <h3><?php echo @$b3_cnt;?></h3> 
+                          <p>Today Course Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('inquiry/today_followup/3')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>          
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-danger">
+                        <div class="inner">
+                          <h3><?php echo $b3_due_inq;?></h3>
+                          <p>Due Course Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('inquiry/due_followup/3')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-info">
+                        <div class="inner">
+                          <h3><?php echo $b3_scl_today;?></h3>
+                          <p>Today School Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('schoolinq/today_followup/3')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-danger">
+                        <div class="inner">
+                          <h3><?php echo $b3_scl_due;?></h3>
+                          <p>Due School Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('schoolinq/due_followup/3')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                  </div>
+                </div><!-- /.container-fluid -->  
+              </section>
+              </div>
+            </div>
+        <?php } ?>
+
+        <?php if($role==1 || $role==2 || $branch_id==4) { ?>
+            <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-block text-left text-bold collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+                  Adajan
+                </button>
+              </h5>
+            </div>
+            <div id="collapseFour" class="collapse <?php if($this->session->userdata('branch_id')==4) { ?> show  <?php } ?>  p-3" aria-labelledby="headingTwo" data-parent="#accordion">
+                <section class="content">
+              <div class="container-fluid">
+                
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                  <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                      <div class="inner">
+                        <h3><?php echo @$b4_cnt;?></h3> 
+                        <p>Today Course Visit</p>
+                      </div>
+                      <div class="icon">
+                        <i class="ion ion-help"></i>
+                      </div>
+                      <a href="<?php echo site_url('inquiry/today_followup/4')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>          
+                  <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                      <div class="inner">
+                        <h3><?php echo $b4_due_inq;?></h3>
+                        <p>Due Course Visit</p>
+                      </div>
+                      <div class="icon">
+                        <i class="ion ion-help"></i>
+                      </div>
+                      <a href="<?php echo site_url('inquiry/due_followup/4')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                      <div class="inner">
+                        <h3><?php echo $b4_scl_today;?></h3>
+                        <p>Today School Visit</p>
+                      </div>
+                      <div class="icon">
+                        <i class="ion ion-help"></i>
+                      </div>
+                      <a href="<?php echo site_url('schoolinq/today_followup/4')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                      <div class="inner">
+                        <h3><?php echo $b4_scl_due;?></h3>
+                        <p>Due School Visit</p>
+                      </div>
+                      <div class="icon">
+                        <i class="ion ion-help"></i>
+                      </div>
+                      <a href="<?php echo site_url('schoolinq/due_followup/4')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+                  <!-- ./col -->
+                </div>
+              </div><!-- /.container-fluid -->  
+            </section>
+            </div>
+            </div>
+        <?php } ?>
+        
+        <?php if($role==1 || $role==2 || $branch_id==5) { ?>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-block text-left text-bold collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseTwo">
+                    Navsari
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseFive" class="collapse <?php if($this->session->userdata('branch_id')==5) { ?> show  <?php } ?>  p-3" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <section class="content">
+                <div class="container-fluid">
+                  
+                  <!-- Small boxes (Stat box) -->
+                  <div class="row">
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-info">
+                        <div class="inner">
+                          <h3><?php echo @$b5_cnt;?></h3> 
+                          <p>Today Course Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('inquiry/today_followup/5')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>          
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-danger">
+                        <div class="inner">
+                          <h3><?php echo $b5_due_inq;?></h3>
+                          <p>Due Course Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('inquiry/due_followup/5')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-info">
+                        <div class="inner">
+                          <h3><?php echo $b5_scl_today;?></h3>
+                          <p>Today School Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('schoolinq/today_followup/5')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                      <!-- small box -->
+                      <div class="small-box bg-danger">
+                        <div class="inner">
+                          <h3><?php echo $b5_scl_due;?></h3>
+                          <p>Due School Visit</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-help"></i>
+                        </div>
+                        <a href="<?php echo site_url('schoolinq/due_followup/5')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                  </div>
+                </div><!-- /.container-fluid -->  
+              </section>
+              </div>
+            </div>
+        <?php } ?>
     </div>
 
-    <div id="collapseOne" class="collapse <?php if($this->session->userdata('branch_id')==1) { ?> show  <?php } ?> p-3" aria-labelledby="headingOne" data-parent="#accordion">
-        <section class="content">
-      <div class="container-fluid">
-        
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <?php 
-          if($role==1||$role==3||$role==7||$role==4||$role==8){
-          ?>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo @$b1_cnt;?></h3> 
-                <p>Today Course Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('inquiry/today_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>          
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3><?php echo $b1_due_inq;?></h3>
-                <p>Due Course Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('inquiry/due_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <?php }?>
-          <!-- ./col -->
-          <?php 
-          if($role==1||$role==3||$role==7||$role==4||$role==8){
-          ?>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo $b1_scl_today;?></h3>
-                <p>Today School Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('schoolinq/today_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3><?php echo $b1_scl_due;?></h3>
-                <p>Due School Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('schoolinq/due_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <?php }?>
-          <!-- ./col -->
-        </div>
-      </div><!-- /.container-fluid -->  
-    </section>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn collapsed btn-block text-left text-bold" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Katargam
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse <?php if($this->session->userdata('branch_id')==2) { ?> show  <?php } ?>  p-3" aria-labelledby="headingTwo" data-parent="#accordion">
-        <section class="content">
-      <div class="container-fluid">
-        
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <?php 
-          if($role==1||$role==3||$role==7||$role==4||$role==8){
-          ?>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo @$b2_cnt;?></h3> 
-                <p>Today Course Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('inquiry/today_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>          
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3><?php echo $b2_due_inq;?></h3>
-                <p>Due Course Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('inquiry/due_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <?php }?>
-          <!-- ./col -->
-          <?php 
-          if($role==1||$role==3||$role==7||$role==4||$role==8){
-          ?>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo $b2_scl_today;?></h3>
-                <p>Today School Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('schoolinq/today_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3><?php echo $b2_scl_due;?></h3>
-                <p>Due School Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('schoolinq/due_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <?php }?>
-          <!-- ./col -->
-        </div>
-      </div><!-- /.container-fluid -->  
-    </section>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-block text-left text-bold collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Utran
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse <?php if($this->session->userdata('branch_id')==3) { ?> show  <?php } ?> p-3" aria-labelledby="headingThree" data-parent="#accordion">
-        <section class="content">
-      <div class="container-fluid">
-        
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <?php 
-          if($role==1||$role==3||$role==7||$role==4||$role==8){
-          ?>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo @$b3_cnt;?></h3> 
-                <p>Today Course Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('inquiry/today_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>          
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3><?php echo $b3_due_inq;?></h3>
-                <p>Due Course Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('inquiry/due_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <?php }?>
-          <!-- ./col -->
-          <?php 
-          if($role==1||$role==3||$role==7||$role==4||$role==8){
-          ?>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo $b3_scl_today;?></h3>
-                <p>Today School Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('schoolinq/today_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3><?php echo $b3_scl_due;?></h3>
-                <p>Due School Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('schoolinq/due_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <?php }?>
-          <!-- ./col -->
-        </div>
-      </div><!-- /.container-fluid -->  
-    </section>
-    </div>
-  </div>
-   <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-block text-left text-bold collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
-          Adajan
-        </button>
-      </h5>
-    </div>
-    <div id="collapseFour" class="collapse <?php if($this->session->userdata('branch_id')==4) { ?> show  <?php } ?>  p-3" aria-labelledby="headingTwo" data-parent="#accordion">
-        <section class="content">
-      <div class="container-fluid">
-        
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <?php 
-          if($role==1||$role==3||$role==7||$role==4||$role==8){
-          ?>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo @$b4_cnt;?></h3> 
-                <p>Today Course Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('inquiry/today_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>          
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3><?php echo $b4_due_inq;?></h3>
-                <p>Due Course Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('inquiry/due_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <?php }?>
-          <!-- ./col -->
-          <?php 
-          if($role==1||$role==3||$role==7||$role==4||$role==8){
-          ?>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo $b4_scl_today;?></h3>
-                <p>Today School Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('schoolinq/today_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3><?php echo $b4_scl_due;?></h3>
-                <p>Due School Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('schoolinq/due_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <?php }?>
-          <!-- ./col -->
-        </div>
-      </div><!-- /.container-fluid -->  
-    </section>
-    </div>
-  </div>
-   <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-block text-left text-bold collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseTwo">
-          Navsari
-        </button>
-      </h5>
-    </div>
-    <div id="collapseFive" class="collapse <?php if($this->session->userdata('branch_id')==5) { ?> show  <?php } ?>  p-3" aria-labelledby="headingTwo" data-parent="#accordion">
-        <section class="content">
-      <div class="container-fluid">
-        
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <?php 
-          if($role==1||$role==3||$role==7||$role==4||$role==8){
-          ?>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo @$b5_cnt;?></h3> 
-                <p>Today Course Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('inquiry/today_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>          
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3><?php echo $b5_due_inq;?></h3>
-                <p>Due Course Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('inquiry/due_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <?php }?>
-          <!-- ./col -->
-          <?php 
-          if($role==1||$role==3||$role==7||$role==4||$role==8){
-          ?>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo $b5_scl_today;?></h3>
-                <p>Today School Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('schoolinq/today_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3><?php echo $b5_scl_due;?></h3>
-                <p>Due School Visit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-help"></i>
-              </div>
-              <a href="<?php echo site_url('schoolinq/due_followup')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <?php }?>
-          <!-- ./col -->
-        </div>
-      </div><!-- /.container-fluid -->  
-    </section>
-    </div>
-  </div>
-</div>
-
-    
   </div>      
 
 

@@ -1,6 +1,9 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 $id= $this->session->userdata('user_login');
+$role= $this->session->userdata('user_role');
+
 $this->db->where('id',$id);
 $arr = $this->db->get('admin')->row_array();
 
@@ -27,21 +30,6 @@ $date_for = date('Y-n-d');
                 Dashboard
             </a>
           </li>
-          <?php 
-          if($arr['role'] == 5 ){
-          ?>
-          <li class="nav-item">
-            <a href="<?php echo site_url('admission/view_faculty_students'); ?>" class="nav-link">
-              <i class="nav-icon fas fa-laptop-code"></i>
-              <p>
-                IT/Multimedia 
-              </p>
-            </a>
-          </li>
-          <?php }?>
-          <?php 
-          if($arr['role'] == 1 || $arr['role'] == 3 || $arr['role'] == 4 || $arr['role'] == 7){
-          ?>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-question"></i>
@@ -63,6 +51,7 @@ $date_for = date('Y-n-d');
                     </li>
             </ul>
           </li>
+          <?php if($role==1 || $role==2) { ?>
            <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-question"></i>
@@ -85,7 +74,7 @@ $date_for = date('Y-n-d');
               </li>
             </ul>
           </li>
-          <?php }?>
+        <?php } ?>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

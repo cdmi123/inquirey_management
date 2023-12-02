@@ -81,22 +81,9 @@ $this->load->view('header');
                   <div class="form-group">
                     <label for="exampleInputEmail1">Role</label>
                     <select class="form-control" name="role">
-                        <option value="4" <?php if(@$data1['role']==4){echo 'selected';}?>>Inquiry Manager</option>
-                        <option value="2" <?php if(@$data1['role']==2){echo 'selected';}?>>Faculty</option>
-                        <option value="5" <?php if(@$data1['role']==5){echo 'selected';}?>>HOD</option>
-                        <option value="6" <?php if(@$data1['role']==6){echo 'selected';}?>>College</option>
-                        <option value="3" <?php if(@$data1['role']==3){echo 'selected';}?>>Receptionist</option>
-                        <option value="7" <?php if(@$data1['role']==7){echo 'selected';}?>>HR</option>
-                        <option value="8" <?php if(@$data1['role']==8){echo 'selected';}?>>Tele Caller</option>
-                        <option value="1" <?php if(@$data1['role']==1){echo 'selected';}?>>Admin</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Department</label>
-                    <select class="form-control" name="dept_id">
-                        <option value="0" <?php if(@$data1['dept_id']==0){echo 'selected';}?>>None</option>
-                        <option value="14" <?php if(@$data1['dept_id']==14){echo 'selected';}?>>Design</option>
-                        <option value="24" <?php if(@$data1['dept_id']==24){echo 'selected';}?>>Development</option>
+                        <option value="1" <?php if(@$data1['role']==1){echo 'selected';}?>>Super Admin</option>
+                        <option value="2" <?php if(@$data1['role']==2){echo 'selected';}?>>Branch Manager</option>
+                        <option value="3" <?php if(@$data1['role']==3){echo 'selected';}?>>Inquery Manager</option>
                     </select>
                   </div>
                   <div class="form-group">

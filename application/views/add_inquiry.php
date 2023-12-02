@@ -147,7 +147,7 @@ if(isset($update_data) && (@$update_data['reference']=='student' or @$update_dat
                     <div class="form-group col-3">
                       <label for="exampleInputEmail1">Visited Branch</label>
                       <select class="form-control select2" name="branch_id" id="branch_id" tabindex="9">
-                          <option value="">Select Visited Branch</option>
+                          <option value="" selected disabled>Select Visited Branch</option>
                           <?php
                           foreach($branches as $branch){
                           ?>

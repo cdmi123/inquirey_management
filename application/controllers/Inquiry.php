@@ -17,8 +17,16 @@ class Inquiry extends CI_Controller {
 		// $this->db->where_in('id',INQ_IDS);
 		$this->db->where_in('status',1);
 
+		if($this->session->userdata('user_role')==3)
+		{
+			$this->db->where('branch_id',$this->session->userdata('branch_id'));
+		}
 		$course['faculties'] = $this->db->get('admin')->result_array();
 
+		if($this->session->userdata('user_role')==3)
+		{
+			$this->db->where('id',$this->session->userdata('branch_id'));
+		}
 		$course['branches'] = $this->db->get('branches')->result_array();
 
 		if($id>0){
@@ -253,7 +261,7 @@ class Inquiry extends CI_Controller {
     		echo json_encode($data);
   	}
 
-  	function today_followup()
+  	function today_followup($id)
 	{
 		$start=$this->uri->segment(3);
 		$branches = $this->db->get('branches')->result_array();
@@ -271,7 +279,7 @@ class Inquiry extends CI_Controller {
 		$this->db->where_in('inq_offline.status',array('P','D'));
 		$this->db->join('admin a','a.id=inq_offline.added_by','left');
 		$this->db->join('admin b','b.id=inq_offline.inquiry_by','left');
-		$this->db->where('inq_offline.branch_id',$this->session->userdata('branch_id'));
+		$this->db->where('inq_offline.branch_id',$id);
 
 		$total = $this->db->count_all_results('inq_offline', FALSE);
 		$this->db->limit($this->perpage,0);
@@ -283,12 +291,13 @@ class Inquiry extends CI_Controller {
 		$data['perpage'] = $this->perpage;
 		$data['found_results'] = $total;
 		$data['type'] = "today";
-		$this->db->where('branch_id',$this->session->userdata('branch_id'));
+		$this->db->where('branch_id',$id);
 		$data['faculties'] = $this->db->get('admin')->result_array();
 		$this->load->view('view_inquiry',$data);
 	}
-	function due_followup()
+	function due_followup($id)
 	{
+
 		$start=$this->uri->segment(3);
 		$branches = $this->db->get('branches')->result_array();
 		$branch_arr = array();
@@ -305,7 +314,7 @@ class Inquiry extends CI_Controller {
 		$this->db->where_in('inq_offline.status',array('P','D'));
 		$this->db->join('admin a','a.id=inq_offline.added_by','left');
 		$this->db->join('admin b','b.id=inq_offline.inquiry_by','left');
-		$this->db->where('inq_offline.branch_id',$this->session->userdata('branch_id'));
+		$this->db->where('inq_offline.branch_id',$id);
 		$total = $this->db->count_all_results('inq_offline', FALSE);
 		$this->db->limit($this->perpage,0);
 		$data['arr'] = $this->db->get()->result_array();
@@ -316,7 +325,7 @@ class Inquiry extends CI_Controller {
 		$data['perpage'] = $this->perpage;
 		$data['found_results'] = $total;
 		$data['type'] = "due";
-		$this->db->where('branch_id',$this->session->userdata('branch_id'));
+		$this->db->where('branch_id',$id);
 		$data['faculties'] = $this->db->get('admin')->result_array();
 		$this->load->view('view_inquiry',$data);
 	}

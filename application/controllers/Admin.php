@@ -9,9 +9,6 @@ class Admin extends CI_Controller
 		if(!$this->session->userdata('user_login')){
 			redirect('staff-login');
 		}
-		if($this->session->userdata('user_role')!=1 && $this->session->userdata('user_role')!=7){
-			redirect('staff-login');	
-		}
 	}
 	function index($id=0)
 	{

@@ -12,11 +12,7 @@ class Login extends CI_Controller
 	{
 		if($this->session->userdata('user_login')!='')
 		{
-			if($this->session->userdata('user_role') ==2){
-				redirect('faculty-students');
-			}else{
-				redirect('staff-dashboard');	
-			}
+				redirect('staff-dashboard');
 		}
 		$data=array();
 		
@@ -36,11 +32,9 @@ class Login extends CI_Controller
 					$this->session->set_userdata('user_role',$arr['role']);
 					$this->session->set_userdata('branch_id',$arr['branch_id']);
 					$this->session->set_userdata('dept_id',$arr['dept_id']);
-					if($arr['role'] ==2){
-						redirect('faculty-students');
-					}else{
-						redirect('staff-dashboard');	
-					}
+				
+					redirect('staff-dashboard');	
+				
 					
 				}else if($arr['status'] == 0){
 					$data['msg']="Your user is not activated.please contact to administrator.";

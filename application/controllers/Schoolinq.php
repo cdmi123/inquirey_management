@@ -355,7 +355,7 @@ class Schoolinq extends CI_Controller {
 		echo json_encode(array('data'=>$html,'pagination'=>$pagination,'found_results'=>$total));
 	}
 
-	function today_followup()
+	function today_followup($id)
 	{
 		$start=$this->uri->segment(3);
 		$date = date('Y-m-d'); 
@@ -388,7 +388,7 @@ class Schoolinq extends CI_Controller {
 		$data['school_data'] = $this->db->get('school_master')->result_array();
 		$this->load->view('view_college_inquiry',$data);
 	}
-	function due_followup()
+	function due_followup($id)
 	{
 		$start=$this->uri->segment(3);
 		$date = date('Y-m-d'); 
@@ -399,6 +399,7 @@ class Schoolinq extends CI_Controller {
 			$this->db->where_in('school_inq.status',array('V','D'));	
 			//$this->db->where_in('school_inq.status',array('V','D',"IC","P"));
 		}
+		
 		$this->db->select('school_inq.*,admin.name as added_by_name,school_master.school_name');
 		$this->db->where('expected_date <',$date);
 		//$this->db->where('expected_date >','2022-10-31');

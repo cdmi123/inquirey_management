@@ -9,12 +9,6 @@ class Dashboard extends CI_Controller {
 		
 		if(!$this->session->userdata('user_login')){
 			redirect('staff-login');
-		}	
-		if($this->session->userdata('user_role')==2){
-			redirect('staff-login');	
-		}
-		if($this->session->userdata('user_role')==6){
-			redirect('college-dashboard');	
 		}
 	}
 	public function index()

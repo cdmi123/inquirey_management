@@ -1,16 +1,22 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+// $role= $this->session->userdata('user_role');
+
 class Admin_model extends CI_Model
 {
 	function insert_data($arr=array())
 	{
-		//oecho "<pre>";print_r($arr);die;
 		$this->db->insert('admin',$arr);
 	}
 
 	function view_data()
 	{
-		// $this->db->where('branch_id',$this->session->userdata('branch_id'));
+		if($this->session->userdata('user_role')==2)
+		{
+			$this->db->where('branch_id',$this->session->userdata('branch_id'));
+		}
+		
 		$qry=$this->db->get('admin');
 		return $qry->result_array();
 	}
